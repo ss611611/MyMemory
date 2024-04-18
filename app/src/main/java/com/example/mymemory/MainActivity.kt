@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
         tvNumMoves = findViewById(R.id.tvNumMoves)
         tvNumPairs = findViewById(R.id.tvNumPairs)
 
-        val  intent = Intent(this, CreateActivity::class.java)
+        val intent = Intent(this, CreateActivity::class.java)
         intent.putExtra(EXTRA_BOARD_SIZE, BoardSize.MEDIUM)
         startActivity(intent)
 
@@ -73,10 +73,12 @@ class MainActivity : AppCompatActivity() {
                     setupBoard()
                 }
             }
+
             R.id.mi_new_size -> {
                 showNewSizeDialog()
                 return true
             }
+
             R.id.mi_custom -> {
                 showCreationDialog()
                 return true
@@ -96,7 +98,7 @@ class MainActivity : AppCompatActivity() {
                 else -> BoardSize.HARD
             }
             // Navigate to  a new activity
-            val  intent = Intent(this, CreateActivity::class.java)
+            val intent = Intent(this, CreateActivity::class.java)
             intent.putExtra(EXTRA_BOARD_SIZE, desiredBoardSize)
             startActivityForResult(intent, CREATE_REQUEST_CODE)
         })
@@ -121,7 +123,11 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    private fun showAlertDialog(title: String, view: View?, positiveClickListener: View.OnClickListener) {
+    private fun showAlertDialog(
+        title: String,
+        view: View?,
+        positiveClickListener: View.OnClickListener
+    ) {
         AlertDialog.Builder(this)
             .setTitle(title)
             .setView(view)
@@ -137,10 +143,12 @@ class MainActivity : AppCompatActivity() {
                 tvNumMoves.text = "Easy: 4 x 2"
                 tvNumPairs.text = "Pairs: 0 / 4"
             }
+
             BoardSize.MEDIUM -> {
                 tvNumMoves.text = "Medium: 6 x 3"
                 tvNumPairs.text = "Pairs: 0 / 9"
             }
+
             BoardSize.HARD -> {
                 tvNumMoves.text = "Hard: 6 x 4"
                 tvNumPairs.text = "Pairs: 0 / 12"
